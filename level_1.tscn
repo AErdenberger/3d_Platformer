@@ -29,3 +29,18 @@ transform = Transform3D(1, 0, 0, 0, 0.907777, 0.419452, 0, -0.419452, 0.907777, 
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-1, 4.37114e-08, -7.57103e-08, 0, 0.866025, 0.5, 8.74228e-08, 0.5, -0.866025, 0, 3.70442, 0)
+
+[node name="PlatformLarge2" parent="." instance=ExtResource("1_i0qm5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+
+[node name="PlatformLarge3" parent="." instance=ExtResource("1_i0qm5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -8)
+
+[node name="PlatformLarge4" parent="." instance=ExtResource("1_i0qm5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -12)
+
+[node name="PlatformLarge5" parent="." instance=ExtResource("1_i0qm5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -15)
+
+[node name="PlatformLarge6" parent="." instance=ExtResource("1_i0qm5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -15)
