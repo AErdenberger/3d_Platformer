@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://d52ii2xwwmfj"]
+[gd_scene load_steps=5 format=3 uid="uid://d52ii2xwwmfj"]
 
 [ext_resource type="PackedScene" uid="uid://boibiis3d45vh" path="res://Platforms/platform_large.tscn" id="1_i0qm5"]
 [ext_resource type="PackedScene" uid="uid://cw0ib30w6q1q0" path="res://player.tscn" id="2_bj342"]
 [ext_resource type="PackedScene" uid="uid://bvupporwe75fo" path="res://enemy.tscn" id="3_2lpd1"]
+[ext_resource type="PackedScene" uid="uid://dmw4umfy31obw" path="res://spikes.tscn" id="4_pae58"]
 
 [node name="Main" type="Node3D"]
 
@@ -45,3 +46,33 @@ move_dir = Vector3(0, 0, -3)
 [node name="Enemy5" parent="." instance=ExtResource("3_2lpd1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.48921, 1, -15.5526)
 move_dir = Vector3(0, 0, 3)
+
+[node name="PlatformLarge7" parent="." instance=ExtResource("1_i0qm5")]
+transform = Transform3D(0.858468, -0.512867, 0, 0.512867, 0.858468, 0, 0, 0, 1, 8.85954, 0.529186, -15.0132)
+
+[node name="PlatformLarge8" parent="." instance=ExtResource("1_i0qm5")]
+transform = Transform3D(0.858468, -0.512867, 0, 0.512867, 0.858468, 0, 0, 0, 1, 10.5872, 1.55389, -15.0132)
+
+[node name="PlatformLarge9" parent="." instance=ExtResource("1_i0qm5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0142, 1.88981, -15.0043)
+
+[node name="PlatformLarge10" parent="." instance=ExtResource("1_i0qm5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.963, 2, -15.0514)
+
+[node name="Spikes" parent="." instance=ExtResource("4_pae58")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.628275, 1.01332, -4.5297)
+
+[node name="Spikes2" parent="." instance=ExtResource("4_pae58")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.56748, 1.03552, -8.58514)
+
+[node name="Spikes3" parent="." instance=ExtResource("4_pae58")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5993, 1.96589, -11.9661)
+
+[node name="Spikes4" parent="." instance=ExtResource("4_pae58")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.38425, 1, -15.5503)
+
+[node name="Spikes5" parent="." instance=ExtResource("4_pae58")]
+transform = Transform3D(0.850505, -0.525966, -0.00129996, 0.525937, 0.85048, -0.00862917, 0.00564423, 0.00665545, 0.999962, 8.1342, 1.2656, -15.6006)
+
+[node name="Spikes6" parent="." instance=ExtResource("4_pae58")]
+transform = Transform3D(0.850505, -0.525966, -0.00129996, 0.525937, 0.85048, -0.00862917, 0.00564423, 0.00665545, 0.999962, 9.74417, 2.21533, -14.4375)
