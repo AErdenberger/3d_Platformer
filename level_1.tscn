@@ -1,12 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://d52ii2xwwmfj"]
+[gd_scene load_steps=8 format=3 uid="uid://d52ii2xwwmfj"]
 
 [ext_resource type="PackedScene" uid="uid://boibiis3d45vh" path="res://Platforms/platform_large.tscn" id="1_i0qm5"]
 [ext_resource type="PackedScene" uid="uid://cw0ib30w6q1q0" path="res://player.tscn" id="2_bj342"]
 [ext_resource type="PackedScene" uid="uid://bvupporwe75fo" path="res://enemy.tscn" id="3_2lpd1"]
 [ext_resource type="PackedScene" uid="uid://dmw4umfy31obw" path="res://spikes.tscn" id="4_pae58"]
 [ext_resource type="PackedScene" uid="uid://bgn6hhaln4yfv" path="res://coin.tscn" id="5_d7lxb"]
-[ext_resource type="Script" path="res://EndFlag.gd" id="6_yg53v"]
-[ext_resource type="ArrayMesh" uid="uid://cx3dwltkgs56g" path="res://Models/flag.obj" id="7_0aif3"]
+[ext_resource type="PackedScene" uid="uid://ce5xto4o33kyl" path="res://end_flag.tscn" id="6_cds7k"]
 
 [sub_resource type="Environment" id="Environment_xiv38"]
 background_mode = 1
@@ -18,9 +17,6 @@ glow_normalized = true
 fog_enabled = true
 fog_light_energy = 2.52
 fog_sun_scatter = 0.44
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_jge62"]
-size = Vector3(0.567978, 1, 0.258057)
 
 [node name="Main" type="Node3D"]
 
@@ -126,17 +122,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.96559, 2.08308, -15.1725)
 [node name="Coin10" parent="." instance=ExtResource("5_d7lxb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0497, 3.2228, -15.0103)
 
-[node name="EndFlag" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.9238, 3.00542, -15.1155)
-script = ExtResource("6_yg53v")
-next_scene = "res://level_1.tscn"
-
-[node name="Model" type="MeshInstance3D" parent="EndFlag"]
-mesh = ExtResource("7_0aif3")
-skeleton = NodePath("../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="EndFlag"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0707626, 0.50316, -0.020874)
-shape = SubResource("BoxShape3D_jge62")
-
-[connection signal="body_entered" from="EndFlag" to="EndFlag" method="_on_body_entered"]
+[node name="EndFlag" parent="." instance=ExtResource("6_cds7k")]
