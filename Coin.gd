@@ -14,3 +14,10 @@ func _process(delta):
 	t += delta
 	var d = (sin(t * bob_speed) + 1) / 2 #change the sin-wave range from 1 -> -1 to 1 -> 0
 	global_position.y = start_y + (d * bob_height)
+
+
+func _on_body_entered(body):
+	if body.is_in_group("Player"):
+		body.add_score(1)
+		queue_free()
+		#check to see if player collided with coin -> increase score by 1 -> destroy the coin

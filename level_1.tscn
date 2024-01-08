@@ -1,14 +1,21 @@
-[gd_scene load_steps=8 format=3 uid="uid://d52ii2xwwmfj"]
+[gd_scene load_steps=7 format=3 uid="uid://d52ii2xwwmfj"]
 
 [ext_resource type="PackedScene" uid="uid://boibiis3d45vh" path="res://Platforms/platform_large.tscn" id="1_i0qm5"]
 [ext_resource type="PackedScene" uid="uid://cw0ib30w6q1q0" path="res://player.tscn" id="2_bj342"]
 [ext_resource type="PackedScene" uid="uid://bvupporwe75fo" path="res://enemy.tscn" id="3_2lpd1"]
 [ext_resource type="PackedScene" uid="uid://dmw4umfy31obw" path="res://spikes.tscn" id="4_pae58"]
-[ext_resource type="ArrayMesh" uid="uid://cge2fuclikg8j" path="res://Models/coinGold.obj" id="5_c0fft"]
-[ext_resource type="Script" path="res://Coin.gd" id="5_k4lb8"]
+[ext_resource type="PackedScene" uid="uid://bgn6hhaln4yfv" path="res://coin.tscn" id="5_d7lxb"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_8g5fr"]
-radius = 1.0
+[sub_resource type="Environment" id="Environment_xiv38"]
+background_mode = 1
+background_color = Color(0.580392, 0.717647, 1, 1)
+ambient_light_energy = 3.8
+reflected_light_source = 2
+glow_enabled = true
+glow_normalized = true
+fog_enabled = true
+fog_light_energy = 2.52
+fog_sun_scatter = 0.44
 
 [node name="Main" type="Node3D"]
 
@@ -82,15 +89,34 @@ transform = Transform3D(0.850505, -0.525966, -0.00129996, 0.525937, 0.85048, -0.
 [node name="Spikes6" parent="." instance=ExtResource("4_pae58")]
 transform = Transform3D(0.850505, -0.525966, -0.00129996, 0.525937, 0.85048, -0.00862917, 0.00564423, 0.00665545, 0.999962, 9.74417, 2.21533, -14.4375)
 
-[node name="Coin" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.665411, 1.29765, 0)
-script = ExtResource("5_k4lb8")
+[node name="Coin" parent="." instance=ExtResource("5_d7lxb")]
 
-[node name="Model" type="MeshInstance3D" parent="Coin"]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
-mesh = ExtResource("5_c0fft")
-skeleton = NodePath("../..")
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_xiv38")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Coin"]
-transform = Transform3D(0.283423, 0, 0, 0, 0.345829, 0, 0, 0, 0.173097, 0.00911903, 0.289587, 0)
-shape = SubResource("SphereShape3D_8g5fr")
+[node name="Coin2" parent="." instance=ExtResource("5_d7lxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.34499, 1.37468, -3.53044)
+
+[node name="Coin3" parent="." instance=ExtResource("5_d7lxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.546236, 1.39989, -3.52376)
+
+[node name="Coin4" parent="." instance=ExtResource("5_d7lxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.503365, 1.34004, -4.45877)
+
+[node name="Coin5" parent="." instance=ExtResource("5_d7lxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.625247, 1.12975, -7.73786)
+
+[node name="Coin6" parent="." instance=ExtResource("5_d7lxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45633, 2.22566, -12.4827)
+
+[node name="Coin7" parent="." instance=ExtResource("5_d7lxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.53228, 1.00342, -14.9998)
+
+[node name="Coin8" parent="." instance=ExtResource("5_d7lxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.88065, 1.51309, -14.5252)
+
+[node name="Coin9" parent="." instance=ExtResource("5_d7lxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.96559, 2.08308, -15.1725)
+
+[node name="Coin10" parent="." instance=ExtResource("5_d7lxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0497, 3.2228, -15.0103)
