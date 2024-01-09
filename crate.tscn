@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://b853wbnmkk2pb"]
+
+[ext_resource type="ArrayMesh" uid="uid://dn4skvmidm7ln" path="res://Models/crate.obj" id="1_le3m4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0wpyb"]
+size = Vector3(0.528748, 0.528763, 0.534126)
+
+[node name="Crate" type="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.73376, 0)
+
+[node name="Model" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_le3m4")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00210571, 0.254936, -0.00340652)
+shape = SubResource("BoxShape3D_0wpyb")

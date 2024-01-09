@@ -1,0 +1,127 @@
+[gd_scene load_steps=7 format=3 uid="uid://cux0deeo1px0p"]
+
+[ext_resource type="PackedScene" uid="uid://cw0ib30w6q1q0" path="res://player.tscn" id="1_n6xn7"]
+[ext_resource type="PackedScene" uid="uid://b853wbnmkk2pb" path="res://crate.tscn" id="2_05v53"]
+[ext_resource type="PackedScene" uid="uid://boibiis3d45vh" path="res://Platforms/platform_large.tscn" id="3_d02jm"]
+[ext_resource type="PackedScene" uid="uid://dmw4umfy31obw" path="res://spikes.tscn" id="4_5v5le"]
+[ext_resource type="PackedScene" uid="uid://bvupporwe75fo" path="res://enemy.tscn" id="5_vnrap"]
+[ext_resource type="PackedScene" uid="uid://ce5xto4o33kyl" path="res://end_flag.tscn" id="6_by0of"]
+
+[node name="Main" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("1_n6xn7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.487375, 1.0349, 1.53114)
+
+[node name="Crate Holder" type="Node3D" parent="."]
+
+[node name="Crate" parent="Crate Holder" instance=ExtResource("2_05v53")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 1.64632, 1.00929, 0.249448)
+
+[node name="Crate2" parent="Crate Holder" instance=ExtResource("2_05v53")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 1.81375, 2.02141, 0.143241)
+
+[node name="Crate3" parent="Crate Holder" instance=ExtResource("2_05v53")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.09336, 2.7652, 0.100455)
+
+[node name="Crate4" parent="Crate Holder" instance=ExtResource("2_05v53")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.28573, 3.29011, 0.136804)
+
+[node name="Crate5" parent="Crate Holder" instance=ExtResource("2_05v53")]
+transform = Transform3D(1.41421, 0, 1.41421, 0, 2, 0, -1.41421, 0, 1.41421, 22.652, 5.00342, 1.0944)
+
+[node name="Crate6" parent="Crate Holder" instance=ExtResource("2_05v53")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.9579, 6.02238, 1.09069)
+
+[node name="Crate7" parent="Crate Holder" instance=ExtResource("2_05v53")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 30.0367, 6.86475, -10.5015)
+
+[node name="Crate8" parent="Crate Holder" instance=ExtResource("2_05v53")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.2975, 7.90272, -10.7004)
+
+[node name="Platform Holder" type="Node3D" parent="."]
+
+[node name="PlatformLarge" parent="Platform Holder" instance=ExtResource("3_d02jm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
+
+[node name="PlatformLarge2" parent="Platform Holder" instance=ExtResource("3_d02jm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.00434, 3, 1.01428)
+
+[node name="PlatformLarge3" parent="Platform Holder" instance=ExtResource("3_d02jm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.6373, 3, 1)
+
+[node name="PlatformLarge4" parent="Platform Holder" instance=ExtResource("3_d02jm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.6522, 2.98407, 1.01279)
+
+[node name="PlatformLarge5" parent="Platform Holder" instance=ExtResource("3_d02jm")]
+transform = Transform3D(0.97192, -0.235312, 0, 0.235312, 0.97192, 0, 0, 0, 1, 14.5388, 3.17246, 1.00693)
+
+[node name="PlatformLarge6" parent="Platform Holder" instance=ExtResource("3_d02jm")]
+transform = Transform3D(0.880063, -0.474856, 0, 0.474856, 0.880063, 0, 0, 0, 1, 16.2527, 3.80057, 0.991353)
+
+[node name="PlatformLarge7" parent="Platform Holder" instance=ExtResource("3_d02jm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.7688, 4.13329, 1.01357)
+
+[node name="PlatformLarge8" parent="Platform Holder" instance=ExtResource("3_d02jm")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 21.9154, 4, 1.04549)
+
+[node name="PlatformLarge9" parent="Platform Holder" instance=ExtResource("3_d02jm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.3762, 5.64847, 1.07315)
+
+[node name="PlatformLarge10" parent="Platform Holder" instance=ExtResource("3_d02jm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.3607, 6, -2.20474)
+
+[node name="PlatformLarge11" parent="Platform Holder" instance=ExtResource("3_d02jm")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 27.5392, 3.94032, -8.00482)
+
+[node name="PlatformLarge12" parent="Platform Holder" instance=ExtResource("3_d02jm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.0224, 7.41855, -13.0545)
+
+[node name="Spikes Holder" type="Node3D" parent="."]
+
+[node name="Spikes" parent="Spikes Holder" instance=ExtResource("4_5v5le")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0082, 4, 0.323021)
+
+[node name="Spikes2" parent="Spikes Holder" instance=ExtResource("4_5v5le")]
+transform = Transform3D(0.987287, -0.158951, 0, 0.158951, 0.987287, 0, 0, 0, 1, 14.041, 4.09641, 1.62244)
+
+[node name="Spikes3" parent="Spikes Holder" instance=ExtResource("4_5v5le")]
+transform = Transform3D(0.882775, -0.469795, 0, 0.469795, 0.882775, 0, 0, 0, 1, 16.2998, 4.97482, 0.388954)
+
+[node name="Spikes4" parent="Spikes Holder" instance=ExtResource("4_5v5le")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.1709, 6.95075, -9.60029)
+
+[node name="Spikes5" parent="Spikes Holder" instance=ExtResource("4_5v5le")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.1277, 6.95075, -10.5972)
+
+[node name="Spikes6" parent="Spikes Holder" instance=ExtResource("4_5v5le")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.9382, 6.95058, -6.91971)
+
+[node name="Spikes7" parent="Spikes Holder" instance=ExtResource("4_5v5le")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.0843, 6.95058, -5.42327)
+
+[node name="Spikes8" parent="Spikes Holder" instance=ExtResource("4_5v5le")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 27.7253, 6.95075, -8.18474)
+
+[node name="Enemy Holder" type="Node3D" parent="."]
+
+[node name="Enemy" parent="Enemy Holder" instance=ExtResource("5_vnrap")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.44139, 3.21352, 0.963222)
+
+[node name="Enemy2" parent="Enemy Holder" instance=ExtResource("5_vnrap")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.8765, 4.20595, 3.28308)
+move_dir = Vector3(0, 0, -3)
+
+[node name="Enemy3" parent="Enemy Holder" instance=ExtResource("5_vnrap")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.2437, 5.18073, 0.913818)
+move_dir = Vector3(-2, -0.5, 0)
+
+[node name="Enemy4" parent="Enemy Holder" instance=ExtResource("5_vnrap")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.2267, 6.95075, -10.6899)
+move_dir = Vector3(3, 0, 3)
+
+[node name="Enemy5" parent="Enemy Holder" instance=ExtResource("5_vnrap")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.4135, 6.95075, -5.49029)
+move_dir = Vector3(-3, 0, -3)
+
+[node name="EndFlag" parent="." instance=ExtResource("6_by0of")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.0825, 8.42197, -13.0919)
