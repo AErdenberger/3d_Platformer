@@ -11,6 +11,10 @@ var score : int
 @onready var model : MeshInstance3D = get_node("Model")
 @onready var score_text : Label = get_node("ScoreText")
 
+@export var sensitivity : int = 500
+@export var camera_path : NodePath
+@onready var camera = get_node(camera_path)
+
 func _physics_process(delta):
 	
 	#apply gravity if we're in the air
@@ -48,3 +52,11 @@ func game_over():
 func add_score(amount):
 	score += amount
 	score_text.text = str("Score: ", score) #str() will concatinate the the label text with the score amount
+	
+	
+func _input(event):
+	if event is InputEventMouseMotion and Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		rotation.y -= event.relative.x / sensitivity
+		
+		$CameraPivot.rotation.x -= event.relative.y / sensitivity
+		$CameraPivot.rotation.x = clamp($CameraPivot.rotation.x, deg_to_rad(-45), deg_to_rad(45))
