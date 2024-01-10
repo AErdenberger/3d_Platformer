@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cw0ib30w6q1q0"]
+[gd_scene load_steps=6 format=3 uid="uid://cw0ib30w6q1q0"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_y6rlv"]
 [ext_resource type="ArrayMesh" uid="uid://gjuyfsvj5gs0" path="res://Models/characterVampire.obj" id="2_vvhn7"]
+[ext_resource type="Script" path="res://SpringArm.gd" id="3_iygs5"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xm7iu"]
 radius = 0.237152
@@ -15,7 +16,6 @@ outline_color = Color(0, 0, 0, 1)
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.009516, 1.41706, 0)
 script = ExtResource("1_y6rlv")
-camera_path = NodePath("CameraPivot")
 
 [node name="Model" type="MeshInstance3D" parent="."]
 mesh = ExtResource("2_vvhn7")
@@ -34,7 +34,10 @@ scale = Vector2(2.84, 2.76)
 text = "Score: 0"
 label_settings = SubResource("LabelSettings_up0ip")
 
-[node name="CameraPivot" type="Node3D" parent="."]
+[node name="SpringArm" type="SpringArm3D" parent="."]
+spring_length = 7.0
+margin = 0.2
+script = ExtResource("3_iygs5")
 
-[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
+[node name="Camera3D" type="Camera3D" parent="SpringArm"]
 transform = Transform3D(1, 0, 0, 0, 0.907777, 0.419452, 0, -0.419452, 0.907777, 0, 2.22118, 2.43571)
