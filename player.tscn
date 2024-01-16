@@ -36,7 +36,7 @@ label_settings = SubResource("LabelSettings_up0ip")
 
 [node name="SpringArm" type="SpringArm3D" parent="."]
 spring_length = 7.0
-margin = 0.2
+margin = 0.0
 script = ExtResource("3_iygs5")
 
 [node name="Camera3D" type="Camera3D" parent="SpringArm"]

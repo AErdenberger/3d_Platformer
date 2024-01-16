@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 var move_speed : float = 4.0
-var jump_force : float = 8.0
+var jump_force : float = 10.0
 var gravity : float = 20.0
 
 var facing_angle : float
@@ -58,7 +58,8 @@ func _physics_process(delta):
 		game_over()
 		
 func _process(delta):
-	_spring_arm.position = position
+	_spring_arm.position.y = position.y + 0.05
+	_spring_arm.position.z = position.z + 0.005
 
 func game_over():
 	get_tree().reload_current_scene()
