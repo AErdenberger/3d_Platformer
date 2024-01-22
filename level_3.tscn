@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://c1wc34fi1vd7m"]
+[gd_scene load_steps=7 format=3 uid="uid://c1wc34fi1vd7m"]
 
 [ext_resource type="PackedScene" uid="uid://boibiis3d45vh" path="res://Platforms/platform_large.tscn" id="1_eiip6"]
 [ext_resource type="PackedScene" uid="uid://ce5xto4o33kyl" path="res://end_flag.tscn" id="2_wils5"]
+[ext_resource type="PackedScene" uid="uid://dmw4umfy31obw" path="res://spikes.tscn" id="3_wev1o"]
+[ext_resource type="PackedScene" uid="uid://bvupporwe75fo" path="res://enemy.tscn" id="4_eru3w"]
+[ext_resource type="PackedScene" uid="uid://cw0ib30w6q1q0" path="res://player.tscn" id="5_f5bm8"]
 
 [sub_resource type="Environment" id="Environment_7wrfr"]
 background_mode = 1
@@ -22,25 +25,49 @@ transform = Transform3D(-1, 4.37114e-08, -7.57104e-08, 0, 0.866025, 0.5, 8.74228
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_7wrfr")
 
-[node name="Node3D" type="Node3D" parent="."]
+[node name="Platform Holder" type="Node3D" parent="."]
 
-[node name="PlatformLarge" parent="Node3D" instance=ExtResource("1_eiip6")]
+[node name="PlatformLarge" parent="Platform Holder" instance=ExtResource("1_eiip6")]
 transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 6, 2.38419e-07, 0, 0)
 
-[node name="PlatformLarge2" parent="Node3D" instance=ExtResource("1_eiip6")]
+[node name="PlatformLarge2" parent="Platform Holder" instance=ExtResource("1_eiip6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00988388, 0, -8.54686)
 
-[node name="PlatformLarge3" parent="Node3D" instance=ExtResource("1_eiip6")]
+[node name="PlatformLarge3" parent="Platform Holder" instance=ExtResource("1_eiip6")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 2.99655, 0, -11.3609)
 
-[node name="PlatformLarge4" parent="Node3D" instance=ExtResource("1_eiip6")]
+[node name="PlatformLarge4" parent="Platform Holder" instance=ExtResource("1_eiip6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.99812, 0, -11.4503)
 
-[node name="PlatformLarge5" parent="Node3D" instance=ExtResource("1_eiip6")]
+[node name="PlatformLarge5" parent="Platform Holder" instance=ExtResource("1_eiip6")]
 transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 6, 12.1585, 0.265413, -17.0892)
 
-[node name="PlatformLarge6" parent="Node3D" instance=ExtResource("1_eiip6")]
+[node name="PlatformLarge6" parent="Platform Holder" instance=ExtResource("1_eiip6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.0098, 0, -21.8837)
 
 [node name="EndFlag" parent="." instance=ExtResource("2_wils5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.1145, 1.00342, -21.9245)
+
+[node name="Spikes Holder" type="Node3D" parent="."]
+
+[node name="Spikes" parent="Spikes Holder" instance=ExtResource("3_wev1o")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 10.9486, 1.29327, -22.3119)
+
+[node name="Spikes2" parent="Spikes Holder" instance=ExtResource("3_wev1o")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 13.3684, 1.27935, -11.854)
+
+[node name="Spikes3" parent="Spikes Holder" instance=ExtResource("3_wev1o")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 12.1228, 1.29329, -16.4295)
+
+[node name="Enemies Holder" type="Node3D" parent="."]
+
+[node name="Enemy" parent="Enemies Holder" instance=ExtResource("4_eru3w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6304, 1.26883, -11.5352)
+move_dir = Vector3(0, 0, -8)
+
+[node name="Enemy2" parent="Enemies Holder" instance=ExtResource("4_eru3w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5747, 1.25564, -22.5318)
+move_dir = Vector3(0, 0, 9)
+
+[node name="Player" parent="." instance=ExtResource("5_f5bm8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.59189, 1.62091, -11.9153)
