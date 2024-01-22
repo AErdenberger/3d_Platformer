@@ -69,5 +69,17 @@ move_dir = Vector3(0, 0, -8)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5747, 1.25564, -22.5318)
 move_dir = Vector3(0, 0, 9)
 
+[node name="Enemy3" parent="Enemies Holder" instance=ExtResource("4_eru3w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.56461, 1.00342, 3.69549)
+move_dir = Vector3(2, 0, 0)
+
+[node name="Enemy4" parent="Enemies Holder" instance=ExtResource("4_eru3w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4631, 1.00342, 1.64012)
+move_dir = Vector3(-2, 0, 0)
+
+[node name="Enemy5" parent="Enemies Holder" instance=ExtResource("4_eru3w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.49972, 0.984927, -0.501428)
+move_dir = Vector3(2, 0, 0)
+
 [node name="Player" parent="." instance=ExtResource("5_f5bm8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.59189, 1.62091, -11.9153)
