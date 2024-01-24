@@ -21,3 +21,5 @@ func _on_body_entered(body):
 		body.add_score(1)
 		queue_free()
 		#check to see if player collided with coin -> increase score by 1 -> destroy the coin
+		
+

@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cw0ib30w6q1q0"]
+[gd_scene load_steps=5 format=3 uid="uid://cw0ib30w6q1q0"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_y6rlv"]
 [ext_resource type="ArrayMesh" uid="uid://gjuyfsvj5gs0" path="res://Models/characterVampire.obj" id="2_vvhn7"]
-[ext_resource type="Script" path="res://SpringArm.gd" id="3_iygs5"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xm7iu"]
 radius = 0.237152
@@ -13,9 +12,10 @@ font_size = 20
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
-[node name="Player" type="CharacterBody3D" groups=["Player"]]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("view") groups=["Player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.009516, 1.41706, 0)
 script = ExtResource("1_y6rlv")
+view = NodePath("")
 
 [node name="Model" type="MeshInstance3D" parent="."]
 mesh = ExtResource("2_vvhn7")
@@ -33,11 +33,3 @@ offset_bottom = 42.0
 scale = Vector2(2.84, 2.76)
 text = "Score: 0"
 label_settings = SubResource("LabelSettings_up0ip")
-
-[node name="SpringArm" type="SpringArm3D" parent="."]
-spring_length = 7.0
-margin = 0.0
-script = ExtResource("3_iygs5")
-
-[node name="Camera3D" type="Camera3D" parent="SpringArm"]
-transform = Transform3D(1, 0, 0, 0, 0.907777, 0.419452, 0, -0.419452, 0.907777, 0, 2.22118, 2.43571)

@@ -1,28 +1,51 @@
-extends SpringArm3D
+extends Node3D
 
-@export var mouse_sensitivity : float = 0.05
+@export_group("Properties")
+@export var target: Node
 
+@export_group("Zoom")
+@export var zoom_minimum = 16
+@export var zoom_maximum = 4
+@export var zoom_speed = 10
+
+@export_group("Rotation")
+@export var rotation_speed = 120
+
+@onready var camera = $Camera3D
+
+var camera_rotation:Vector3
+var zoom = 10
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#camera can move independently of the character
-	#won't inherit its position, rotation or scale
-	top_level = true 
 	
-	#hides and locks the cursor to the game window
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	
-func _unhandled_input(event):
-	if event is InputEventMouseMotion and Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		rotation_degrees.x -= event.relative.y * mouse_sensitivity
-		#clamp prevents the camera from rolling over, limiting the cameras movement
-		rotation_degrees.x = clamp(rotation_degrees.x, -90.0, 30.0)
-		
-		rotation_degrees.y -= event.relative.x * mouse_sensitivity
-		#the wrapf function will keep the rotation from going over 360 degrees
-		rotation_degrees.y = wrapf(rotation_degrees.y, 0.0, 360.0)
+	camera_rotation = rotation_degrees
+	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	
+	self.position = self.position.lerp(target.position, delta * 4)
+	rotation_degrees = rotation_degrees.lerp(camera_rotation, delta * 6)
+	
+	camera.position = camera.position.lerp(Vector3(0, 0, zoom), 8 * delta)
+	
+	handle_input(delta)
 	pass
+	
+func handle_input(delta):
+	#Rotation
+	
+	var input := Vector3.ZERO
+	
+	input.y = Input.get_axis("camera_left", "camera_right")
+	input.x = Input.get_axis("camera_up", "camera_down")
+	
+	#Limit the camera rotation
+	camera_rotation += input.limit_length(1.0) * rotation_speed * delta
+	#we don't want the camera to go directly below or directly above the character
+	camera_rotation.x = clamp(camera_rotation.x, -80, -10)
+	
+	zoom += Input.get_axis("zoom_in", "zoom_out") * zoom_speed * delta
+	zoom = clamp(zoom, zoom_maximum, zoom_minimum)

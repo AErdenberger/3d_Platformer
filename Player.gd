@@ -1,78 +1,96 @@
 extends CharacterBody3D
 
-var move_speed : float = 4.0
-var jump_force : float = 10.0
-var gravity : float = 20.0
+@export var view: Node3D
 
-var facing_angle : float
+var move_speed = 250
+var move_velocity: Vector3
 
 var score : int
 
-#var _velocity = Vector3.ZERO
-var _snap_vector = Vector3.DOWN
+var gravity:float = 0
+var jump_strength = 7
 
-@onready var model : MeshInstance3D = get_node("Model")
-@onready var _spring_arm : SpringArm3D = $SpringArm
+var rotation_direction : float
+
+var previously_floored = false
+
+var jump_single = true
+var jump_double = true
+
+@onready var model = $Model
 @onready var score_text : Label = get_node("ScoreText")
 
-@export var sensitivity : int = 500
-@export var camera_path : NodePath
-@onready var camera = get_node(camera_path)
-
 func _physics_process(delta):
+	handle_controls(delta)
+	handle_gravity(delta)
 	
-	#apply gravity if we're in the air
-	if not is_on_floor():
-		velocity.y -= gravity * delta
-
-	var move_direction = Vector3.ZERO
-	move_direction.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
-	move_direction.z = Input.get_action_strength("move_backward") - Input.get_action_strength("move_forward")
-	move_direction = move_direction.rotated(Vector3.UP, _spring_arm.rotation.y).normalized()
-	#get keyboard input
-	#var input = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
-	#calculate move direction
-	#var dir = Vector3(input.x, 0, input.y)
+	#Movement
+	var applied_velocity : Vector3
+	#velocity is from CharacterBody
+	#Lerp - Returns the result of the linear interpolation between this vector and to by amount weight. 
+		#weight is on the range of 0.0 to 1.0, representing the amount of interpolation.
+	applied_velocity = velocity.lerp(move_velocity, delta * 10)
+	applied_velocity.y = -gravity
 	
-	#assign direction to velocity
-	velocity.x = move_direction.x * move_speed 
-	velocity.z = move_direction.z * move_speed
-	velocity.y -= gravity * delta
-	
-	var just_landed = is_on_floor() and _snap_vector == Vector3.ZERO
-	if Input.is_action_pressed("jump") and is_on_floor():
-		velocity.y = jump_force
-		_snap_vector = Vector3.ZERO
-	elif just_landed:
-		_snap_vector = Vector3.DOWN #snap the character to the floor
-	 
-	#apply velocity
+	velocity = applied_velocity
 	move_and_slide()
 	
-	#if we're moving, set facing direction
-	if velocity.length() > 0:
-		facing_angle = Vector2(velocity.y, velocity.x).angle()
-		model.rotation.y = lerp_angle(model.rotation.y, facing_angle, 0.5)
+	if position.y < -10:
+		get_tree().reload_current_scene()
 		
-	if global_position.y < -5:
-		game_over()
+	model.scale = model.scale.lerp(Vector3(1,1,1), delta * 10)
+	
+	if is_on_floor() and gravity > 2 and !previously_floored:
+		model.scale = Vector3(1.25, 0.75, 1.25)
 		
-func _process(delta):
-	_spring_arm.position.y = position.y + 0.05
-	_spring_arm.position.z = position.z + 0.005
+	previously_floored = is_on_floor()
+	
+	if Vector2(velocity.z, velocity.x).length() > 0:
+		rotation_direction = Vector2(velocity.z, velocity.x).angle()
+		
+	rotation.y = lerp_angle(rotation.y, rotation_direction, delta * 10)
 
+	pass
+	
+func handle_controls(delta):
+	var input := Vector3.ZERO
+	
+	#Get axis input by specifying two actions, one negative and one positive.
+	input.x = Input.get_axis("move_left", "move_right")
+	input.z = Input.get_axis("move_forward", "move_backward")
+	
+	input = input.rotated(Vector3.UP, view.rotation.y).normalized()
+	
+	move_velocity = input * move_speed * delta
+	
+	if Input.is_action_just_pressed("jump"):
+		if(jump_double):
+			gravity = -jump_strength
+			jump_double = false
+			model.scale = Vector3(0.5, 1.5, 0.5)
+		if(jump_single): 
+			jump()
+		
+	pass
+	
+func jump():
+	
+	gravity = -jump_strength
+	
+	model.scale = Vector3(0.5, 1.5, 0.5)
+	
+	jump_single = false
+	jump_double = true
+	
+func handle_gravity(delta):
+	gravity += 25 * delta
+	if gravity > 0 and is_on_floor():
+		gravity = 0
+		jump_single = true
+		
 func game_over():
 	get_tree().reload_current_scene()
-	
 	
 func add_score(amount):
 	score += amount
 	score_text.text = str("Score: ", score) #str() will concatinate the the label text with the score amount
-	
-	
-#func _input(event):
-	#if event is InputEventMouseMotion and Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-	#	rotation.y -= event.relative.x / sensitivity
-		
-	#	$CameraPivot.rotation.x -= event.relative.y / sensitivity
-	#	$CameraPivot.rotation.x = clamp($CameraPivot.rotation.x, deg_to_rad(-45), deg_to_rad(45))
