@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cux0deeo1px0p"]
+[gd_scene load_steps=9 format=3 uid="uid://cux0deeo1px0p"]
 
 [ext_resource type="PackedScene" uid="uid://cw0ib30w6q1q0" path="res://player.tscn" id="1_n6xn7"]
 [ext_resource type="PackedScene" uid="uid://b853wbnmkk2pb" path="res://crate.tscn" id="2_05v53"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dmw4umfy31obw" path="res://spikes.tscn" id="4_5v5le"]
 [ext_resource type="PackedScene" uid="uid://bvupporwe75fo" path="res://enemy.tscn" id="5_vnrap"]
 [ext_resource type="PackedScene" uid="uid://ce5xto4o33kyl" path="res://end_flag.tscn" id="6_by0of"]
+[ext_resource type="PackedScene" uid="uid://cv0qbarl1wjcq" path="res://view.tscn" id="7_w3fi2"]
 
 [sub_resource type="Environment" id="Environment_fs6pp"]
 background_mode = 1
@@ -20,8 +21,9 @@ fog_sun_scatter = 0.44
 
 [node name="Main" type="Node3D"]
 
-[node name="Player" parent="." instance=ExtResource("1_n6xn7")]
+[node name="Player" parent="." node_paths=PackedStringArray("view") instance=ExtResource("1_n6xn7")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.487375, 1.0349, 1.53114)
+view = NodePath("../View")
 
 [node name="Crate Holder" type="Node3D" parent="."]
 
@@ -136,9 +138,13 @@ move_dir = Vector3(-3, 0, -3)
 
 [node name="EndFlag" parent="." instance=ExtResource("6_by0of")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.0825, 8.42197, -13.0919)
+next_scene = "res://Levels/level_3.tscn"
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-1, 4.37114e-08, -7.57104e-08, 0, 0.866025, 0.5, 8.74228e-08, 0.5, -0.866025, 0.487375, 4.73932, 1.53114)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_fs6pp")
+
+[node name="View" parent="." node_paths=PackedStringArray("target") instance=ExtResource("7_w3fi2")]
+target = NodePath("../Player")

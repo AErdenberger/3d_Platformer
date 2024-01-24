@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://c1wc34fi1vd7m"]
+[gd_scene load_steps=8 format=3 uid="uid://c1wc34fi1vd7m"]
 
 [ext_resource type="PackedScene" uid="uid://boibiis3d45vh" path="res://Platforms/platform_large.tscn" id="1_eiip6"]
 [ext_resource type="PackedScene" uid="uid://ce5xto4o33kyl" path="res://end_flag.tscn" id="2_wils5"]
 [ext_resource type="PackedScene" uid="uid://dmw4umfy31obw" path="res://spikes.tscn" id="3_wev1o"]
 [ext_resource type="PackedScene" uid="uid://bvupporwe75fo" path="res://enemy.tscn" id="4_eru3w"]
 [ext_resource type="PackedScene" uid="uid://cw0ib30w6q1q0" path="res://player.tscn" id="5_f5bm8"]
+[ext_resource type="PackedScene" uid="uid://cv0qbarl1wjcq" path="res://view.tscn" id="6_jju6i"]
 
 [sub_resource type="Environment" id="Environment_7wrfr"]
 background_mode = 1
@@ -81,5 +82,9 @@ move_dir = Vector3(-2, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.49972, 0.984927, -0.501428)
 move_dir = Vector3(2, 0, 0)
 
-[node name="Player" parent="." instance=ExtResource("5_f5bm8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.59189, 1.62091, -11.9153)
+[node name="Player" parent="." node_paths=PackedStringArray("view") instance=ExtResource("5_f5bm8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0417733, 1.15231, 5.26963)
+view = NodePath("../View")
+
+[node name="View" parent="." node_paths=PackedStringArray("target") instance=ExtResource("6_jju6i")]
+target = NodePath("../Player")
